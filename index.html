@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<title>IPTV Player | Aghil Echresh</title>
+<link rel="stylesheet" href="./static/css/pages.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+</head>
+<body>
+<header><div><h1>📺 IPTV Player</h1><p>پخش آنلاین شبکه‌های زنده</p></div><div class="stats" id="stats">در حال بارگذاری...</div></header>
+<main>
+<section class="player"><video id="video" controls playsinline></video><div class="now" id="now">یک شبکه را انتخاب کنید</div></section>
+<section class="toolbar"><input id="search" type="search" placeholder="🔎 جستجوی شبکه یا کشور..."><select id="group"><option value="">همه دسته‌ها</option></select><button id="refresh">↻ تازه‌سازی</button></section>
+<section id="channels" class="grid"></section>
+</main>
+<footer>IPTV Player • GitHub Pages • Aghil-Echresh</footer>
+<script src="./static/js/pages.js"></script>
+</body></html>
