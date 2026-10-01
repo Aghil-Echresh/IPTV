@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IPTV Player</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+<header><h1>📺 IPTV Player</h1><div id="stats">در حال بارگذاری...</div></header>
+<main>
+<section class="player"><video id="video" controls playsinline></video><div id="now">یک شبکه را انتخاب کنید</div></section>
+<section class="controls"><input id="search" placeholder="جستجوی شبکه..."><select id="group"><option value="">همه دسته‌ها</option></select><button id="reload">↻ تازه‌سازی</button></section>
+<section id="channels" class="grid"></section>
+</main>
+<script src="/static/js/script.js"></script>
+</body>
+</html>
