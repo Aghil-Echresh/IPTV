@@ -55,3 +55,26 @@ https://iranefardalive.com/stream/live.m3u8
 
 #EXTINF:-1 tvg-id="SetarehTV.uk" tvg-name="ستاره تی‌وی" tvg-logo="https://www.setareh.tv/images/logo/logo.webp" group-title="🇪🇺 شبکه‌های فارسی اروپا",ستاره تی‌وی
 https://setarehhls.wns.live/hls/stream.m3u8
+# Iranian news and international Persian channels
+#EXTINF:-1 tvg-id="IRINN.ir" tvg-name="شبکه خبر" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/IRINN.ir.png" group-title="🇮🇷 اخبار ایران",شبکه خبر
+https://live-aburayhan1106.telewebion.net/ek/irinn/live/1080p/index.m3u8
+#EXTINF:-1 tvg-id="IRINN2.ir" tvg-name="شبکه خبر ۲" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/IRINN2.ir.png" group-title="🇮🇷 اخبار ایران",شبکه خبر ۲
+https://live-aburayhan1105.telewebion.net/ek/irinn2/live/1080p/index.m3u8
+#EXTINF:-1 tvg-id="JameJam1.ir" tvg-name="جام جم ۱" tvg-logo="https://i.imgur.com/BjaN3W1.png" group-title="🌍 فارسی خارج از ایران",جام جم ۱
+https://s1-cloud.irib.ir/securelive3/jamejam1hd/jamejam1hd.m3u8
+#EXTINF:-1 tvg-id="JameJam2.ir" tvg-name="جام جم ۲" tvg-logo="https://i.imgur.com/BjaN3W1.png" group-title="🌍 فارسی خارج از ایران",جام جم ۲
+https://s1-cloud.irib.ir/securelive3/jamejam2sd/jamejam2sd.m3u8
+#EXTINF:-1 tvg-id="JameJam3.ir" tvg-name="جام جم ۳" tvg-logo="https://i.imgur.com/BjaN3W1.png" group-title="🌍 فارسی خارج از ایران",جام جم ۳
+https://s1-cloud.irib.ir/securelive3/jamejam3sd/jamejam3sd.m3u8
+
+# GEM entertainment and movie channels
+#EXTINF:-1 tvg-id="GEMTV.fa" tvg-name="GEM TV" tvg-logo="https://gemgroup.tv/assets/images/channels/icon_1.png" group-title="🇪🇺 GEM فارسی",GEM TV
+https://ca-rt.onetv.app/gem/index-0.m3u8
+#EXTINF:-1 tvg-id="GEMFilm.fa" tvg-name="GEM Film" tvg-logo="https://i.imgur.com/nrFz3LU.png" group-title="🇪🇺 GEM فارسی",GEM Film
+https://ca-rt.onetv.app/gemfilm/index-0.m3u8
+#EXTINF:-1 tvg-id="GEMSeries.fa" tvg-name="GEM Series" tvg-logo="https://gemgroup.tv/assets/images/channels/icon_20.png" group-title="🇪🇺 GEM فارسی",GEM Series
+https://ca-rt.onetv.app/gemseries/index-0.m3u8
+#EXTINF:-1 tvg-id="GEMDrama.fa" tvg-name="GEM Drama" tvg-logo="https://i.imgur.com/k2pGyRH.png" group-title="🇪🇺 GEM فارسی",GEM Drama
+https://ca-rt.onetv.app/gemdrama/index-0.m3u8
+#EXTINF:-1 tvg-id="GEMComedy.fa" tvg-name="GEM Comedy" tvg-logo="https://i.imgur.com/FuscfJW.png" group-title="🇪🇺 GEM فارسی",GEM Comedy
+https://ca-rt.onetv.app/gemcomedy/index-0.m3u8
