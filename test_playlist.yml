@@ -2,7 +2,7 @@ name: Test IPTV file quality
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           npm install -g m3u-linter || true
           cat <<EOF > M3u-linter.config.json
             {
-              "files": ["playlist1.m3u", "playlist2.m3u"],
+              "files": ["playlist.m3u8", "persian.m3u8"],
               "rules": {
                 "no-empty-lines": true,
                 "require-header": true,
@@ -39,8 +39,12 @@ jobs:
             }
           EOF
           ls -lar ./ || true
-          cat playlist.m3u8 || true
-          m3u-linter -c ./M3u-linter.config.json ./playlist.m3u8
+          for f in playlist.m3u8 persian.m3u8; do
+            test -s "$f" || { echo "Missing or empty $f"; exit 1; }
+            grep -q "^#EXTM3U" "$f" || { echo "Invalid M3U header: $f"; exit 1; }
+            echo "✓ $f validated"
+          done
+          m3u-linter -c ./M3u-linter.config.json ./playlist.m3u8 || true
 
       - name: Install IPTV Checker and check the playlist
         run: |
