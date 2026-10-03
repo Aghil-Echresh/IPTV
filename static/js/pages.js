@@ -1,9 +1,64 @@
-const GITHUB_REPO="Aghil-Echresh/IPTV",GITHUB_API="https://api.github.com",RAW="https://raw.githubusercontent.com/Aghil-Echresh/IPTV/main/";const PLAYLISTS=[RAW+"playlist.m3u8",RAW+"persian.m3u8","./playlist.m3u8","./persian.m3u8"];const video=document.getElementById("video"),list=document.getElementById("channels"),search=document.getElementById("search"),group=document.getElementById("group"),stats=document.getElementById("stats"),now=document.getElementById("now");let channels=[],hls=null;
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function parse(text){const out=[];let c=null;for(const raw of text.split(/\r?\n/)){const line=raw.trim();if(line.startsWith("#EXTINF:")){const [,meta,name]=line.match(/^#EXTINF:-?\d+\s*(.*?),(.*)$/)||[];if(!meta)continue;const attrs={};for(const m of meta.matchAll(/([\w-]+)="([^"]*)"/g))attrs[m[1]]=m[2];c={name:(name||attrs["tvg-name"]||"Unknown").trim(),logo:attrs["tvg-logo"]||"",group:attrs["group-title"]||"Other",id:attrs["tvg-id"]||""}}else if(c&&line&&!line.startsWith("#")){c.url=line;out.push(c);c=null}}return out}
-function render(){const q=search.value.trim().toLowerCase(),g=group.value;const data=channels.filter(c=>(!g||c.group===g)&&(!q||c.name.toLowerCase().includes(q)||c.group.toLowerCase().includes(q)));stats.textContent=data.length+" شبکه";list.innerHTML=data.length?data.map((c,i)=>'<article class="card" data-i="'+i+'">'+(c.logo?'<img loading="lazy" src="'+esc(c.logo)+'" onerror="this.style.display=\'none\'" alt="">':'')+'<h3>'+esc(c.name)+'</h3><small>'+esc(c.group)+'</small></article>').join(""):'<div class="empty">شبکه‌ای پیدا نشد.</div>';list.querySelectorAll(".card").forEach((el,i)=>el.onclick=()=>play(data[i]))}
-function play(c){now.textContent="▶ "+c.name;if(hls){hls.destroy();hls=null}if(video.canPlayType("application/vnd.apple.mpegurl")){video.src=c.url;video.play().catch(()=>{})}else if(window.Hls&&Hls.isSupported()){hls=new Hls({enableWorker:true});hls.loadSource(c.url);hls.attachMedia(video);hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));hls.on(Hls.Events.ERROR,(e,d)=>{if(d.fatal)now.textContent="⚠️ پخش این شبکه در حال حاضر در دسترس نیست"})}else now.textContent="مرورگر شما از HLS پشتیبانی نمی‌کند"}
-async function fetchGitHub(path){const r=await fetch(GITHUB_API+path,{headers:{"Accept":"application/vnd.github+json"}});if(!r.ok)throw Error(r.status);return r.json()}
-async function loadGitHub(){try{const [repo,commits,runs]=await Promise.all([fetchGitHub("/repos/"+GITHUB_REPO),fetchGitHub("/repos/"+GITHUB_REPO+"/commits?per_page=1"),fetchGitHub("/repos/"+GITHUB_REPO+"/actions/runs?per_page=1")]);const release=await fetchGitHub("/repos/"+GITHUB_REPO+"/releases/latest").catch(()=>null);document.getElementById("ghStars").textContent="⭐ "+repo.stargazers_count;document.getElementById("ghRelease").textContent=release?.tag_name||"بدون Release";document.getElementById("ghCommit").textContent=(commits[0]?.sha||"").slice(0,7)||"—";const run=runs.workflow_runs?.[0];document.getElementById("ghActions").textContent=run?(run.conclusion==="success"?"🟢 موفق":run.status==="in_progress"?"🟡 در حال اجرا":"🔴 "+(run.conclusion||run.status)):"—"}catch(e){document.getElementById("ghActions").textContent="⚪ در دسترس نیست"}}
-async function load(){stats.textContent="در حال بارگذاری...";const tried=[];for(const url of PLAYLISTS){try{const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw Error();const text=await r.text();const parsed=parse(text);if(parsed.length){channels=parsed;document.getElementById("ghSource").textContent=url.startsWith(RAW)?"⚡ منبع شبکه‌ها: GitHub Raw · "+parsed.length+" شبکه":"📺 منبع جایگزین محلی · "+parsed.length+" شبکه";const groups=[...new Set(channels.map(c=>c.group).filter(Boolean))].sort((a,b)=>a.localeCompare(b));group.innerHTML='<option value="">همه دسته‌ها</option>'+groups.map(g=>'<option value="'+esc(g)+'">'+esc(g)+'</option>').join("");render();return} }catch(e){tried.push(url)}}stats.textContent="خطا";list.innerHTML='<div class="empty">Playlist از GitHub یا منبع جایگزین قابل دریافت نیست.</div>'}
-search.oninput=render;group.onchange=render;document.getElementById("refresh").onclick=()=>{load();loadGitHub()};load();loadGitHub();
+const REPO="Aghil-Echresh/IPTV";
+const RAW="https://raw.githubusercontent.com/Aghil-Echresh/IPTV/main/";
+const SOURCES=[RAW+"playlist.m3u8",RAW+"persian.m3u8","./playlist.m3u8","./persian.m3u8"];
+const video=document.getElementById("video"),list=document.getElementById("channels"),search=document.getElementById("search"),group=document.getElementById("group"),stats=document.getElementById("stats"),now=document.getElementById("now"),source=document.getElementById("source"),refresh=document.getElementById("refresh");
+let channels=[],hls=null,loading=false;
+
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function parseM3U(text){
+ const out=[]; let item=null;
+ for(const raw of text.split(/\r?\n/)){
+  const line=raw.trim();
+  if(line.startsWith("#EXTINF:")){
+   const m=line.match(/^#EXTINF:-?\d+\s*(.*?),(.*)$/);
+   if(!m) continue;
+   const attrs={}; for(const a of m[1].matchAll(/([\w-]+)="([^"]*)"/g)) attrs[a[1]]=a[2];
+   item={name:(m[2]||attrs["tvg-name"]||"Unknown").trim(),logo:attrs["tvg-logo"]||"",group:attrs["group-title"]||"Other",id:attrs["tvg-id"]||""};
+  }else if(item&&line&&!line.startsWith("#")){item.url=line;out.push(item);item=null}
+ }
+ return out;
+}
+function render(){
+ const q=search.value.trim().toLowerCase(),g=group.value;
+ const data=channels.filter(c=>(!g||c.group===g)&&(!q||c.name.toLowerCase().includes(q)||c.group.toLowerCase().includes(q)));
+ stats.textContent=data.length+" شبکه";
+ list.innerHTML=data.length?data.map((c,i)=>'<article class="card" tabindex="0" data-i="'+i+'">'+(c.logo?'<img loading="lazy" src="'+esc(c.logo)+'" onerror="this.style.display=\'none\'" alt="">':'')+'<h3>'+esc(c.name)+'</h3><small>'+esc(c.group)+'</small></article>').join(""):'<div class="empty">شبکه‌ای با این جستجو پیدا نشد.</div>';
+ list.querySelectorAll(".card").forEach((el,i)=>{el.onclick=()=>play(data[i]);el.onkeydown=e=>{if(e.key==="Enter"||e.key===" ")play(data[i])}});
+}
+function play(c){
+ if(!c?.url)return;
+ now.textContent="▶ "+c.name;
+ if(hls){hls.destroy();hls=null}
+ video.pause();video.removeAttribute("src");video.load();
+ if(video.canPlayType("application/vnd.apple.mpegurl")){video.src=c.url;video.play().catch(()=>{})}
+ else if(window.Hls&&Hls.isSupported()){
+  hls=new Hls({enableWorker:true,lowLatencyMode:true});
+  hls.loadSource(c.url);hls.attachMedia(video);
+  hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));
+  hls.on(Hls.Events.ERROR,(e,d)=>{if(d.fatal)now.textContent="⚠️ این شبکه فعلاً قابل پخش نیست"});
+ }else now.textContent="⚠️ مرورگر شما از HLS پشتیبانی نمی‌کند";
+}
+async function load(){
+ if(loading)return; loading=true; refresh.disabled=true; stats.textContent="در حال بارگذاری...";
+ list.innerHTML='<div class="empty">⏳ در حال دریافت فهرست شبکه‌ها...</div>';
+ let lastError=null;
+ for(const url of SOURCES){
+  try{
+   const r=await fetch(url,{cache:"no-store"});
+   if(!r.ok)throw new Error("HTTP "+r.status);
+   const text=await r.text(),parsed=parseM3U(text);
+   if(!parsed.length)throw new Error("Playlist خالی است");
+   channels=parsed;
+   const groups=[...new Set(channels.map(c=>c.group).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+   group.innerHTML='<option value="">همه دسته‌ها</option>'+groups.map(g=>'<option value="'+esc(g)+'">'+esc(g)+'</option>').join("");
+   source.textContent=(url.startsWith(RAW)?"⚡ منبع GitHub Raw":"📺 منبع محلی")+" · "+channels.length+" شبکه · "+groups.length+" دسته";
+   render(); loading=false; refresh.disabled=false; return;
+  }catch(e){lastError=e}
+ }
+ channels=[];stats.textContent="خطا";source.textContent="❌ دریافت Playlist ناموفق بود"+(lastError?.message?": "+lastError.message:"");list.innerHTML='<div class="empty">فهرست شبکه‌ها در دسترس نیست. دکمه «تازه‌سازی» را بزنید.</div>';
+ loading=false;refresh.disabled=false;
+}
+search.addEventListener("input",render);
+group.addEventListener("change",render);
+refresh.addEventListener("click",load);
+load();
