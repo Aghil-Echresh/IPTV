@@ -1,4 +1,4 @@
-name: GitHub API Integration Check
+name: GitHub-Powered IPTV Check
 
 on:
   push:
@@ -10,32 +10,30 @@ permissions:
   contents: read
 
 jobs:
-  github-api:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Check repository through GitHub REST API
+      - name: Check repository API
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          echo "Repository: $GITHUB_REPOSITORY"
-          gh api "repos/$GITHUB_REPOSITORY" --jq '{full_name,private,default_branch,html_url}'
-          gh api "repos/$GITHUB_REPOSITORY/commits?per_page=1" --jq '.[0] | {sha, message: .commit.message}'
-          gh api "user" --jq '{login,id}'
-          echo "GitHub REST API integration: OK"
-
-      - name: Save integration status
+          gh api "repos/$GITHUB_REPOSITORY" --jq '{full_name,default_branch,html_url}'
+          gh api "repos/$GITHUB_REPOSITORY/commits?per_page=1" --jq '.[0] | {sha,message:.commit.message}'
+      - name: Validate IPTV playlists
+        run: |
+          set -euo pipefail
+          for f in playlist.m3u8 persian.m3u8; do
+            test -s "$f" || { echo "Missing or empty $f"; exit 1; }
+            grep -q '^#EXTM3U' "$f" || { echo "Invalid M3U header: $f"; exit 1; }
+            echo "✓ $f validated"
+          done
+      - name: Integration status
         run: |
           mkdir -p integration-status
-          printf '%s\n' '{' > integration-status/github-api-status.json
-          printf '  "repository": "%s",\n' "$GITHUB_REPOSITORY" >> integration-status/github-api-status.json
-          printf '  "workflow": "%s",\n' "$GITHUB_WORKFLOW" >> integration-status/github-api-status.json
-          printf '  "run_id": "%s",\n' "$GITHUB_RUN_ID" >> integration-status/github-api-status.json
-          printf '  "status": "ok"\n' >> integration-status/github-api-status.json
-          printf '%s\n' '}' >> integration-status/github-api-status.json
-
-      - name: Upload integration status
+          printf '{"repository":"%s","status":"ok","run_id":"%s"}\n' "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > integration-status/status.json
+      - name: Upload status artifact
         uses: actions/upload-artifact@v4
         with:
-          name: github-api-status
-          path: integration-status/github-api-status.json
+          name: github-powered-iptv-status
+          path: integration-status/status.json
