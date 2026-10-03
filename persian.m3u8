@@ -69,16 +69,12 @@ https://s1-cloud.irib.ir/securelive3/jamejam3sd/jamejam3sd.m3u8
 
 # GEM entertainment and movie channels
 #EXTINF:-1 tvg-id="GEMTV.fa" tvg-name="GEM TV" tvg-logo="https://gemgroup.tv/assets/images/channels/icon_1.png" group-title="🇪🇺 GEM فارسی",GEM TV
-https://ca-rt.onetv.app/gem/index-0.m3u8
+https://ca-rt.onetv.app/gem/index-0.m3u8?token=onetv202
 #EXTINF:-1 tvg-id="GEMFilm.fa" tvg-name="GEM Film" tvg-logo="https://i.imgur.com/nrFz3LU.png" group-title="🇪🇺 GEM فارسی",GEM Film
-https://ca-rt.onetv.app/gemfilm/index-0.m3u8
+https://ca-rt.onetv.app/gemfilm/index-0.m3u8?token=onetv202
 #EXTINF:-1 tvg-id="GEMSeries.fa" tvg-name="GEM Series" tvg-logo="https://gemgroup.tv/assets/images/channels/icon_20.png" group-title="🇪🇺 GEM فارسی",GEM Series
-https://ca-rt.onetv.app/gemseries/index-0.m3u8
+https://ca-rt.onetv.app/gemseries/index-0.m3u8?token=onetv202
 #EXTINF:-1 tvg-id="GEMDrama.fa" tvg-name="GEM Drama" tvg-logo="https://i.imgur.com/k2pGyRH.png" group-title="🇪🇺 GEM فارسی",GEM Drama
-https://ca-rt.onetv.app/gemdrama/index-0.m3u8
+https://ca-rt.onetv.app/gemdrama/index-0.m3u8?token=onetv202
 #EXTINF:-1 tvg-id="GEMComedy.fa" tvg-name="GEM Comedy" tvg-logo="https://i.imgur.com/FuscfJW.png" group-title="🇪🇺 GEM فارسی",GEM Comedy
-https://ca-rt.onetv.app/gemcomedy/index-0.m3u8
-# Documentary / geography
-# National Geographic Persian service was discontinued in 2020; this is the currently listed National Geographic international stream.
-#EXTINF:-1 tvg-id="NationalGeographic.us" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="🌍 جغرافیا و مستند",National Geographic
-http://198.58.104.90:8989/natgeo/index.m3u8
+https://ca-rt.onetv.app/gemcomedy/index-0.m3u8?token=onetv202
