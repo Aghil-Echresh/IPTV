@@ -3793,3 +3793,28 @@ https://hls.navahang.live/hls/stream.m3u8
 #EXTINF:-1 tvg-id="4Music.fr" tvg-name="4 Music" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/4Music.fr.png" group-title="📡 ماهواره‌ای فارسی" tvg-language="fas" tvg-quality="HD",4 Music
 https://itthls.wns.live/hls/stream.m3u8
 
+# ===== 🎬 فیلم و سریال فارسی =====
+#EXTINF:-1 tvg-id="MBCPersia.ae" tvg-name="MBC Persia" tvg-logo="https://i.imgur.com/4FXiyjn.png" group-title="🎬 فیلم و سریال فارسی" tvg-language="fas",MBC Persia
+https://shls-mbcpersia-prod-dub.shahid.net/out/v1/bdc7cd0d990e4c54808632a52c396946/index.m3u8
+#EXTINF:-1 tvg-id="PersianaCinema.fr" tvg-name="Persiana Cinema" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/PersianaCinema.fr.png" group-title="🎬 فیلم و سریال فارسی" tvg-language="fas",Persiana Cinema
+https://cinehls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaComedy.fr" tvg-name="Persiana Comedy" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/PersianaComedy.fr.png" group-title="🎬 فیلم و سریال فارسی" tvg-language="fas",Persiana Comedy
+https://comedyhls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaFamily.fr" tvg-name="Persiana Family" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/PersianaFamily.fr.png" group-title="🎬 فیلم و سریال فارسی" tvg-language="fas",Persiana Family
+https://familyhls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaIranian.fr" tvg-name="Persiana Iranian" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/PersianaIranian.fr.png" group-title="🎬 فیلم و سریال فارسی" tvg-language="fas",Persiana Iranian
+https://irhls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaSeries.fr" tvg-name="Persiana Series" group-title="🎬 فیلم و سریال فارسی" tvg-language="fas",Persiana Series
+https://serieshls.persiana.live/hls/stream.m3u8
+
+# ===== ⚽ ورزش فارسی =====
+#EXTINF:-1 tvg-id="PersianaSports.fr" tvg-name="Persiana Sports" group-title="⚽ ورزش فارسی" tvg-language="fas",Persiana Sports
+https://sporthls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaSports2.fr" tvg-name="Persiana Sports 2" group-title="⚽ ورزش فارسی" tvg-language="fas",Persiana Sports 2
+https://sport2hls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaSports3.fr" tvg-name="Persiana Sports 3" group-title="⚽ ورزش فارسی" tvg-language="fas",Persiana Sports 3
+https://sport3hls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaSports4.fr" tvg-name="Persiana Sports 4" group-title="⚽ ورزش فارسی" tvg-language="fas",Persiana Sports 4
+https://sport4hls.persiana.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="PersianaFight.fr" tvg-name="Persiana Fight" group-title="⚽ ورزش فارسی" tvg-language="fas",Persiana Fight
+https://fighthls.persiana.live/hls/stream.m3u8
