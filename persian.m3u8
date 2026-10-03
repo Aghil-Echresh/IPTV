@@ -1,0 +1,40 @@
+#EXTM3U
+# Persian / Iranian public IPTV channels
+# Sources checked against public IPTV lists; availability may vary by region.
+
+#EXTINF:-1 tvg-id="IRIB1.ir" tvg-name="شبکه یک" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/IRIB1.ir.png" group-title="🇮🇷 شبکه‌های فارسی",شبکه یک
+https://live-aburayhan1111.telewebion.net/ek/tv1/live/1080p/index.m3u8
+#EXTINF:-1 tvg-id="IRIB2.ir" tvg-name="شبکه دو" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/IRIB2.ir.png" group-title="🇮🇷 شبکه‌های فارسی",شبکه دو
+https://live-aburayhan1104.telewebion.net/ek/tv2/live/1080p/index.m3u8
+#EXTINF:-1 tvg-id="IRIB3.ir" tvg-name="شبکه سه" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/IRIB3.ir.png" group-title="🇮🇷 شبکه‌های فارسی",شبکه سه
+https://live-aburayhan1103.telewebion.net/ek/tv3/live/108050p/index.m3u8
+#EXTINF:-1 tvg-id="IRIB4.ir" tvg-name="شبکه چهار" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/IRIB4.ir.png" group-title="🇮🇷 شبکه‌های فارسی",شبکه چهار
+https://live-aburayhan1107.telewebion.net/ek/tv4/live/576p/index.m3u8
+#EXTINF:-1 tvg-id="TehranTV.ir" tvg-name="شبکه تهران" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/TehranTV.ir.png" group-title="🇮🇷 شبکه‌های فارسی",شبکه تهران
+https://live-aburayhan1103.telewebion.net/ek/tehran/live/1080p/index.m3u8
+#EXTINF:-1 tvg-id="AmouzeshTV.ir" tvg-name="شبکه آموزش" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/AmouzeshTV.ir.png" group-title="🇮🇷 شبکه‌های فارسی",شبکه آموزش
+https://live-aburayhan1110.telewebion.net/ek/amouzesh/live/576p/index.m3u8
+#EXTINF:-1 tvg-id="IRIBMostanad.ir" tvg-name="شبکه مستند" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/IRIBMostanad.ir.png" group-title="🇮🇷 شبکه‌های فارسی",شبکه مستند
+https://live-aburayhan1110.telewebion.net/ek/mostanad/live/1080p/index.m3u8
+#EXTINF:-1 tvg-id="QuranTV.ir" tvg-name="شبکه قرآن" group-title="🇮🇷 شبکه‌های فارسی",شبکه قرآن
+https://ncdn.telewebion.ir/quran/live/playlist.m3u8
+#EXTINF:-1 tvg-id="NamayeshTV.ir" tvg-name="شبکه نمایش" group-title="🇮🇷 شبکه‌های فارسی",شبکه نمایش
+https://ncdn.telewebion.ir/namayesh/live/playlist.m3u8
+#EXTINF:-1 tvg-id="OfoghTV.ir" tvg-name="شبکه افق" group-title="🇮🇷 شبکه‌های فارسی",شبکه افق
+https://ncdn.telewebion.ir/ofogh/live/playlist.m3u8
+#EXTINF:-1 tvg-id="VarzeshTV.ir" tvg-name="شبکه ورزش" group-title="🇮🇷 شبکه‌های فارسی",شبکه ورزش
+https://ncdn.telewebion.ir/varzesh/live/playlist.m3u8
+#EXTINF:-1 tvg-id="PooyaTV.ir" tvg-name="پویا و نهال" group-title="🇮🇷 شبکه‌های فارسی",پویا و نهال
+https://ncdn.telewebion.ir/pooya/live/playlist.m3u8
+#EXTINF:-1 tvg-id="SalamatTV.ir" tvg-name="شبکه سلامت" group-title="🇮🇷 شبکه‌های فارسی",شبکه سلامت
+https://ncdn.telewebion.ir/salamat/live/playlist.m3u8
+#EXTINF:-1 tvg-id="Nasim.ir" tvg-name="شبکه نسیم" group-title="🇮🇷 شبکه‌های فارسی",شبکه نسیم
+https://ncdn.telewebion.ir/nasim/live/playlist.m3u8
+#EXTINF:-1 tvg-id="IRIBOmid.ir" tvg-name="شبکه امید" group-title="🇮🇷 شبکه‌های فارسی",شبکه امید
+https://ncdn.telewebion.ir/omid/live/playlist.m3u8
+#EXTINF:-1 tvg-id="Tamasha.ir" tvg-name="شبکه تماشا" group-title="🇮🇷 شبکه‌های فارسی",شبکه تماشا
+https://ncdn.telewebion.ir/hdtest/live/playlist.m3u8
+#EXTINF:-1 tvg-id="iFilmPersian.ir" tvg-name="آی‌فیلم فارسی" tvg-logo="https://raw.githubusercontent.com/shayanline/iptv-iran/main/assets/logos/iFilmPersian.ir.png" group-title="🇮🇷 شبکه‌های فارسی",آی‌فیلم فارسی
+https://live.presstv.co.uk/hls/ifilmfa_4_482/index.m3u8
+#EXTINF:-1 tvg-id="IRIBUHD.ir" tvg-name="فراتر" group-title="🇮🇷 شبکه‌های فارسی",فراتر
+https://ncdn.telewebion.ir/faratar/live/playlist.m3u8
