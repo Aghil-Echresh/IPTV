@@ -38,3 +38,20 @@ https://ncdn.telewebion.ir/hdtest/live/playlist.m3u8
 https://live.presstv.co.uk/hls/ifilmfa_4_482/index.m3u8
 #EXTINF:-1 tvg-id="IRIBUHD.ir" tvg-name="فراتر" group-title="🇮🇷 شبکه‌های فارسی",فراتر
 https://ncdn.telewebion.ir/faratar/live/playlist.m3u8
+# Persian-language channels based in / broadcasting from Europe
+# Streams are public HLS endpoints and may change or be geo-restricted.
+
+#EXTINF:-1 tvg-id="BBCPersian.uk" tvg-name="بی‌بی‌سی فارسی" tvg-logo="https://i.imgur.com/4uTMnPb.png" group-title="🇪🇺 شبکه‌های فارسی اروپا",بی‌بی‌سی فارسی
+https://vs-hls-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_persian_tv/mobile_wifi_main_hd_abr_v2.m3u8
+
+#EXTINF:-1 tvg-id="IranInternational.uk" tvg-name="ایران اینترنشنال" tvg-logo="https://i.imgur.com/55RpaF3.png" group-title="🇪🇺 شبکه‌های فارسی اروپا",ایران اینترنشنال
+https://hlspackager.akamaized.net/live/DB/IRAN_INTERNATIONAL/HLS/IRAN_INTERNATIONAL.m3u8
+
+#EXTINF:-1 tvg-id="Manoto.uk" tvg-name="منوتو" tvg-logo="https://i.imgur.com/8wE1Lbp.png" group-title="🇪🇺 شبکه‌های فارسی اروپا",منوتو
+https://ca-rt.onetv.app/manototv/index-0.m3u8?token=onetv202
+
+#EXTINF:-1 tvg-id="Iranefarda.uk" tvg-name="ایران فردا" tvg-logo="https://i.imgur.com/ixgcgZY.png" group-title="🇪🇺 شبکه‌های فارسی اروپا",ایران فردا
+https://iranefardalive.com/stream/live.m3u8
+
+#EXTINF:-1 tvg-id="SetarehTV.uk" tvg-name="ستاره تی‌وی" tvg-logo="https://www.setareh.tv/images/logo/logo.webp" group-title="🇪🇺 شبکه‌های فارسی اروپا",ستاره تی‌وی
+https://setarehhls.wns.live/hls/stream.m3u8
