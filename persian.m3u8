@@ -78,3 +78,7 @@ https://ca-rt.onetv.app/gemseries/index-0.m3u8
 https://ca-rt.onetv.app/gemdrama/index-0.m3u8
 #EXTINF:-1 tvg-id="GEMComedy.fa" tvg-name="GEM Comedy" tvg-logo="https://i.imgur.com/FuscfJW.png" group-title="🇪🇺 GEM فارسی",GEM Comedy
 https://ca-rt.onetv.app/gemcomedy/index-0.m3u8
+# Documentary / geography
+# National Geographic Persian service was discontinued in 2020; this is the currently listed National Geographic international stream.
+#EXTINF:-1 tvg-id="NationalGeographic.us" tvg-name="National Geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="🌍 جغرافیا و مستند",National Geographic
+http://198.58.104.90:8989/natgeo/index.m3u8
